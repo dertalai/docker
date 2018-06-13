@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:10
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=parlamento
+      - POSTGRES_USER=parlamento
+      - POSTGRES_PASSWORD=parlamento
+    ports:
+      - "127.0.0.1:5432:5432"
+
+volumes:
+  db-data:
+

@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  ldap:
+    image: openjdk:8-jdk-alpine
+    volumes:
+      - ldap-data:/tmp
+      - ./complete/target/gs-authenticating-ldap-0.1.0.jar:/app.jar
+#    environment:
+#       - SLAPD_PASSWORD=adminy
+#       - SLAPD_DOMAIN=springframework.org
+#       - SLAPD_ORGANISATION="Emergya SL"
+#      - LDAP_ORGANISATION="Emergya SL"
+#      - LDAP_DOMAIN="emergya.com"
+#      - LDAP_ADMIN_PASSWORD="admin"
+    ports:
+      - "127.0.0.1:8389:8389"
+    entrypoint: java
+    command: -Djava.security.egd=file:/dev/./urandom -jar app.jar
+
+volumes:
+  ldap-data:
+
