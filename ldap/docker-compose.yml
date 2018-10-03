@@ -14,7 +14,7 @@ services:
 #      - LDAP_DOMAIN="emergya.com"
 #      - LDAP_ADMIN_PASSWORD="admin"
     ports:
-      - "127.0.0.1:8389:8389"
+      - "0.0.0.0:8389:8389"
     entrypoint: java
     command: -Djava.security.egd=file:/dev/./urandom -jar app.jar
 

@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+  tomcat:
+    image: tomcat:8.5
+    depends_on:
+      - ldap
+      - db
+    volumes:
+      - /home/mlopez/parlamento/eepp/target/eepp.war:/usr/local/tomcat/webapps/eepp.war
+      - ./postgresql-42.2.5.jar:/usr/local/tomcat/lib/postgresql-42.2.5.jar
+      - ./setenv.sh:/usr/local/tomcat/bin/setenv.sh
+    environment:
+      - JPDA_ADDRESS=8000
+      - JPDA_TRANSPORT=dt_socket
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:8000:8000"
+    command: bash -c catalina.sh\ jpda\ run
+
+  ldap:
+    image: openjdk:8-jdk-alpine
+    volumes:
+      - ldap-data:/tmp
+      - ./complete/target/gs-authenticating-ldap-0.1.0.jar:/app.jar
+    ports:
+      - "0.0.0.0:8389:8389"
+    entrypoint: java
+    command: -Djava.security.egd=file:/dev/./urandom -jar app.jar
+
+  db:
+    image: postgres:10
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=presupuestos
+      - POSTGRES_USER=presupuestos
+      - POSTGRES_PASSWORD=presupuestos
+    ports:
+      - "0.0.0.0:5432:5432"
+
+volumes:
+  db-data:
+  ldap-data:
+
