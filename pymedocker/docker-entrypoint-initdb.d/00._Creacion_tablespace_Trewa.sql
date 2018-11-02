@@ -2,13 +2,13 @@
   Carga de variables
 */
 DEF TABLESPACE_D='TS_TREWA'
-DEF DATAFILE_D='/u01/app/oracle/tablespaces/TS_TREWA.dbf'
+DEF DATAFILE_D='/u01/app/oracle/TS_TREWA.dbf'
 DEF DATAFILESIZE_D='500'
 DEF TABLESPACE_I='TS_TREWA_I'
-DEF DATAFILE_I='/u01/app/oracle/tablespaces/TS_TREWA_I.dbf'
+DEF DATAFILE_I='/u01/app/oracle/TS_TREWA_I.dbf'
 DEF DATAFILESIZE_I='500'
 DEF TABLESPACE_B='TS_TREWA_BLOB'
-DEF DATAFILE_B='/u01/app/oracle/tablespaces/TS_TREWA_BLOB.dbf'
+DEF DATAFILE_B='/u01/app/oracle/TS_TREWA_BLOB.dbf'
 DEF DATAFILESIZE_B='500'
 
 

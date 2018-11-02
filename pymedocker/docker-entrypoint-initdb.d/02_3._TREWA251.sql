@@ -16,7 +16,7 @@
 --   Tables: 127        Columns: 1801       Constraints: 552    
 --   Triggers: 132 
 --   Views: 127         
-
+DEF OWNER='TREWA'
 
 CREATE SEQUENCE &OWNER..GN_S_STMA
   START WITH 3
@@ -1080,7 +1080,7 @@ CREATE TABLE &OWNER..TR_REMISIONES
   F_REMISION         DATE                       NOT NULL,
   F_RECEPCION        DATE,
   C_IDENT_LOTE       VARCHAR2(255 BYTE),
-  T_&OWNER..SEQ_LOTE         VARCHAR2(255 BYTE),
+  T_&OWNER.SEQ_LOTE         VARCHAR2(255 BYTE),
   CREADO_API         VARCHAR2(10 BYTE)          DEFAULT '-'                   NOT NULL,
   MODIFICADO_API     VARCHAR2(10 BYTE)          DEFAULT '-'                   NOT NULL
 )
@@ -7099,14 +7099,14 @@ CREATE OR REPLACE FORCE VIEW &OWNER..TR_v_remisiones (creado_api,
                                               f_remision,
                                               f_recepcion,
                                               c_ident_lote,
-                                              t_&OWNER..SEQ_lote
+                                              t_&OWNER.SEQ_lote
                                              )
 AS
    SELECT REM.creado_api, REM.f_creacion, REM.modificado_api, REM.f_modifica,
           REM.x_remi, REM.expe_x_expe, REM.c_csv_origen, REM.t_sistema_origen,
           REM.t_sistema_destino, REM.c_reg_entrada, REM.c_reg_salida,
           REM.t_entorno, REM.t_version_nti_ja, REM.f_remision,
-          REM.f_recepcion, REM.c_ident_lote, REM.t_&OWNER..SEQ_lote
+          REM.f_recepcion, REM.c_ident_lote, REM.t_&OWNER.SEQ_lote
      FROM &OWNER..TR_remisiones REM;
 
 
