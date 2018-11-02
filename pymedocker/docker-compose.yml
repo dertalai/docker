@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  oracle-xe:
+    image: sath89/oracle-xe-11g
+    volumes:
+      - db-data:/u01/app/oracle
+    environment:
+      - ORACLE_ALLOW_REMOTE=true
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:49161:1521"
+
+volumes:
+  db-data:
+
