@@ -5,6 +5,7 @@ services:
     image: sath89/oracle-xe-11g
     volumes:
       - db-data:/u01/app/oracle
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     environment:
       - ORACLE_ALLOW_REMOTE=true
     ports:
